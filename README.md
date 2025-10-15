@@ -5,3 +5,20 @@ Great, this is your readme file sort of like a doc that describes. To make somet
 Here is a link for that www.markdownguide.org/cheat-sheet
 
 Here is the link for a python review https://www.w3schools.com/python/
+
+## 10/15/2025 Comments
+
+To run the fixed version:
+
+### Install Dependencies: 
+`pip install openai python-dotenv`
+
+### Create a .env file (in the same folder)
+`OPENAI_API_KEY=sk-yourkeyhere`
+
+### Running 
+
+Windows: `python fixed-chatbot.py`
+Linux/MacOS: `python3 fixed-chatbot.py`
+
+
