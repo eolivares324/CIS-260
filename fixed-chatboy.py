@@ -80,7 +80,7 @@ def ask_insurance_bot(user_input: str) -> str:
 # -----------------------------
 def main():
     print("========================================")
-    print("   🏦 Your Insurance AI Helper")
+    print("   Your Insurance AI Helper")
     print("========================================")
 
     # Check if API key is loaded — print True/False (not the key itself!)
@@ -94,11 +94,11 @@ def main():
         reply = ask_insurance_bot(question)
 
         # Print the bot's reply
-        print("\n🤖 Bot:", reply)
+        print("\nBot:", reply)
 
     except Exception as e:
         # Handle any runtime errors gracefully
-        print("\n❌ An error occurred:", e)
+        print("\nAn error occurred:", e)
         print("Make sure your .env file or environment variable is configured properly.")
 
 # -----------------------------
