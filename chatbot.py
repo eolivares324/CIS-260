@@ -1,25 +1,13 @@
-## Please review this code.
-
-import random
-
-# Predefined responses
-responses = {
-    "hello": ["Hi there!", "Hello!", "Hey! How can I help?"],
-    "bye": ["Goodbye!", "See you later!", "Take care!"],
-    "how are you": ["I'm doing well, thanks!", "Great! How about you?"]
-}
-
-def preprocess(text):
-    """Simple preprocessing (lowercasing)."""
-    return text.lower()
-
-def get_response(user_input):
-    """Return chatbot response based on user input."""
-    user_input = preprocess(user_input)
-    for key in responses:
-        if key in user_input:
-            return random.choice(responses[key])
-    return "I'm not sure I understand. Can you rephrase?"
+# ==========================================================
+# File: help.py
+# Purpose: Simple command-line chatbot for insurance inquiries (looped version).
+# Author: Emilia Olivares
+# Description:
+#   - Loads your OpenAI API key securely from an environment variable or .env file
+#   - Repeatedly prompts the user for an insurance-related question
+#   - Uses the OpenAI Chat API to return friendly, professional answers
+#   - Allows user to exit easily
+# ==========================================================
 
 def chat():
     print("Chatbot: Hello! Type 'quit' to exit.")
