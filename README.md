@@ -11,14 +11,14 @@ Here is the link for a python review https://www.w3schools.com/python/
 To run the fixed version:
 
 ### Install Dependencies: 
-`pip install openai python-dotenv`
+`pip install openai python-dotenv datetime`
 
 ### Create a .env file (in the same folder)
 `OPENAI_API_KEY=sk-yourkeyhere`
 
 ### Running 
 
-Windows: `python fixed-chatbot.py`
+Windows: `python help.py`
 Linux/MacOS: `python3 fixed-chatbot.py`
 
 ### 
