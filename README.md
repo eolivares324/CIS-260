@@ -6,7 +6,7 @@ Here is a link for that www.markdownguide.org/cheat-sheet
 
 Here is the link for a python review https://www.w3schools.com/python/
 
-## 10/15/2025 Comments
+## 10/28/2025 Comments
 
 To run help.py:
 
