@@ -8,7 +8,8 @@ Here is the link for a python review https://www.w3schools.com/python/
 
 ## 10/15/2025 Comments
 
-To run the fixed version:
+To run help.py:
+
 
 ### Install Dependencies: 
 `pip install openai python-dotenv datetime`
@@ -16,11 +17,21 @@ To run the fixed version:
 ### Create a .env file (in the same folder)
 `OPENAI_API_KEY=sk-yourkeyhere`
 
-### Running 
+### Running from command line
 
 Windows: `python help.py`
 Linux/MacOS: `python3 fixed-chatbot.py`
 
-### 
+### You'll see:
+`========================================
+       Your Insurance AI Helper
+========================================
+OPENAI_API_KEY loaded: True
+Enter your role (e.g., 'claims adjuster', 'agent', 'customer support'):`
+
+### Ask an Insurance Question!
+`Ask the Insurance Bot (or type 'exit' to quit): What does liability insurance cover?
+
+Bot: Liability insurance is designed to protect you financially in the event that you are held responsible for causing injury to someone else or damaging their property...`
 
 
