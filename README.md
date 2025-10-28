@@ -23,15 +23,21 @@ Windows: `python help.py`
 Linux/MacOS: `python3 fixed-chatbot.py`
 
 ### You'll see:
-`========================================
-       Your Insurance AI Helper
+
+
 ========================================
+
+       Your Insurance AI Helper
+       
+========================================
+
+
 OPENAI_API_KEY loaded: True
-Enter your role (e.g., 'claims adjuster', 'agent', 'customer support'):`
+Enter your role (e.g., 'claims adjuster', 'agent', 'customer support'):
 
 ### Ask an Insurance Question!
-`Ask the Insurance Bot (or type 'exit' to quit): What does liability insurance cover?
+Ask the Insurance Bot (or type 'exit' to quit): What does liability insurance cover?
 
-Bot: Liability insurance is designed to protect you financially in the event that you are held responsible for causing injury to someone else or damaging their property...`
+Bot: Liability insurance is designed to protect you financially in the event that you are held responsible for causing injury to someone else or damaging their property...
 
 
