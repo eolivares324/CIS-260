@@ -42,4 +42,12 @@ Ask the Insurance Bot (or type 'exit' to quit): What does liability insurance co
 
 Bot: Liability insurance is designed to protect you financially in the event that you are held responsible for causing injury to someone else or damaging their property...
 
+### Quick Commands: 
 
+| Command          | Description                         |
+| ---------------- | ----------------------------------- |
+| `help`           | Show available quick commands       |
+| `policies`       | List common insurance policy types  |
+| `claims`         | Outline standard claim filing steps |
+| `coverage`       | Summarize standard coverage         |
+| `exit` or `quit` | End the session                     |
