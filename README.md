@@ -1,10 +1,8 @@
 # CIS-260
 
-Great, this is your readme file sort of like a doc that describes. To make something like this with the file type called markdown you simply have this with the file name and '.md' at the end of it. 
+### The Insurance Command Line AI Helper
 
-Here is a link for that www.markdownguide.org/cheat-sheet
-
-Here is the link for a python review https://www.w3schools.com/python/
+This is a command line chatbot designed to assist insurance professionals with policy inquires, claims guidance and general insurance information. This is all powered by the OpenAI API.
 
 ## 10/15/2025 Comments
 
@@ -22,7 +20,7 @@ To run help.py:
 Windows: `python help.py`
 Linux/MacOS: `python3 fixed-chatbot.py`
 
-### 10/28/2025 Comments
+## 10/28/2025 Comments
 
 ### You'll see:
 
