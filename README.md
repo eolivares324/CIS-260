@@ -14,11 +14,12 @@ To run help.py:
 
 ### Create a .env file (in the same folder)
 `OPENAI_API_KEY=sk-yourkeyhere`
+Note: *(Never share your API key publicly!)*
 
 ### Running from command line
 
 Windows: `python help.py`
-Linux/MacOS: `python3 fixed-chatbot.py`
+Linux/MacOS: `python3 help.py`
 
 ## 10/28/2025 Comments
 
