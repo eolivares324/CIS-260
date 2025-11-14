@@ -9,6 +9,7 @@
 #   - Offers quick commands for common insurance topics
 #   - Logs all chats for review or compliance
 #   - Customizes tone for different insurance roles
+#   - New quardrails and security features added
 # ==========================================================
 
 # -----------------------------
@@ -18,6 +19,7 @@ import os                      # For environment variable handling
 import datetime                 # For timestamped logging
 from dotenv import load_dotenv  # For loading .env files (dev convenience)
 from openai import OpenAI       # OpenAI client SDK
+
 
 # -----------------------------
 # Load environment variables
@@ -63,6 +65,8 @@ def ask_insurance_bot(user_input: str, conversation_history: list, role: str) ->
              "You are currently assisting an insurance agent. "
              "Answer questions in a friendly, professional, clear, and helpful manner. "
             "Provide accurate and ethical information about claims, policy details, and quotes, but never access or request personal data. "
+            "If a question is unrelated to insurance, politely refuse to answer and redirect the user "
+            "to insurance-related topics. Maintain context across the     conversation."
             "Maintain context across multiple messages in this conversation."
         ),
     }
@@ -98,6 +102,62 @@ def log_interaction(user_input: str, bot_reply: str) -> None:
         log.write(f"[{timestamp}] User: {user_input}\n")
         log.write(f"[{timestamp}] Bot: {bot_reply}\n\n")
 
+# -----------------------------
+# Function: is_insurance_related()
+# Purpose:
+#   Quickly checks if the user's question is related to insurance.
+#   Uses simple keyword matching.
+# -----------------------------
+def is_insurance_related(question: str) -> bool:
+    keywords = [
+        "insurance", "claim", "coverage", "policy", "premium", "deductible",
+        "adjuster", "liability", "underwriting", "broker", "agent", "loss",
+        "accident", "risk", "quote", "renewal"
+    ]
+
+    # Basic keyword match
+    return any(word in question.lower() for word in keywords)
+
+# -----------------------------
+# Function: validate_role()
+# Purpose:
+#   Ensures the entered role is recognized and relevant to insurance.
+#   Prompts user again if invalid, with a limited number of attempts.
+# -----------------------------
+def validate_role(role_input: str) -> str:
+    VALID_ROLES = {
+        "agent", "broker", "underwriter", "claims adjuster", "adjuster", "customer support", "risk assesor", "loss control specialist", "insurance analyst", "sales representative", "policy administrator", "insurance professional"
+    }
+
+    # Normalize for comparison
+    role = role_input.lower().strip()
+    # Direct match check
+    if role in VALID_ROLES:
+        return role_input
+
+    # Partial match for common variants
+    for valid_role in VALID_ROLES:
+        if valid_role in role:
+            return valid_role
+    # Retry loop for invalid input
+    attempts = 0
+    while attempts < 2:
+        print("\n Invalid role entered.")
+        print("Accepted roles include examples such as:")
+        print(", ".join(sorted(VALID_ROLES)))
+        role = input("\nPlease enter a valid insurance-related role: ").strip().lower()
+        attempts += 1
+        if role in VALID_ROLES:
+            return role
+        for valid_role in VALID_ROLES:
+            if valid_role in role:
+                return valid_role
+
+    #Default fallback if invalid after multiple attempts
+    print("\n Too many invalid attemps. Defaulting role to 'insurance professional'.")
+    return "insurance professional"
+
+
 
 # -----------------------------
 # Function: main()
@@ -113,9 +173,11 @@ def main():
 
     print("OPENAI_API_KEY loaded:", bool(os.getenv("OPENAI_API_KEY")))
 
-    # Role customization for tone and context
-    role = input("\nEnter your role (e.g., 'claims adjuster', 'agent', 'customer support'): ").strip() or "insurance professional"
-    print("Welcome! Type 'help' for quick commands or 'exit' to quit.\n")
+    # Role customization with validation and guardrails
+    raw_role = input("\nEnter your role (e.g., 'claims adjuster', 'agent', 'customer support'): ").strip()
+    role = validate_role(raw_role or "insurance professional")
+
+    print(f"\nWelcome, {role.title()}! Type 'help' for quick commands or 'exit' to quit.\n")
 
     # Initialize conversation memory
     conversation_history = []
@@ -173,6 +235,11 @@ def main():
             # Skip empty input
             if not question:
                 print("Please enter a question or type 'exit' to quit.")
+                continue
+            # Topic validation 
+            if not is_insurance_related(question):
+                print("\nBot: I'm sorry, but I can only assist with insurance-related topics. "
+                      "Please ask a question related to policies, claims, coverage, or the insurance industry.")
                 continue
 
             # Generate and display AI response
