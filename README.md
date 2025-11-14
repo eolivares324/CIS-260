@@ -50,3 +50,19 @@ Bot: Liability insurance is designed to protect you financially in the event tha
 | `claims`         | Outline standard claim filing steps |
 | `coverage`       | Summarize standard coverage         |
 | `exit` or `quit` | End the session                     |
+
+### Role Validation & Insurance-Only Guardrails:
+To maintain accuracy and compliance, the help.py assistant now includes two layers of safety logic.
+
+### Role Validation System
+Before the chatbot starts, users must now identify themselves with a valid insurance role.
+
+### [x] Accepted Examples 
+The include but are not limited to:
+-Agent
+-Broker
+-Underwriter
+-Policy Administrator
+-Risk Assesor
+
+
