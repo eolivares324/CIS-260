@@ -5,12 +5,19 @@
 This is a README file for the command line chatbot designed to assist **insurance professionals** with policy inquires, claims guidance and general insurance information. This is all powered by the OpenAI API.
 
 ##Features
+
 +AI-Powered Insurance Assistant
+
 +Role-Based Customization
+
 +Persistent Conversation Memory
+
 +Quick Commands(CLI Mode)
+
 +Tkinter GUI Mode
+
 +Secure API Key Loading
+
 
 ## Prerequisites
 
