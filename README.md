@@ -4,7 +4,7 @@
 
 This is a README file for the command line chatbot designed to assist **insurance professionals** with policy inquires, claims guidance and general insurance information. This is all powered by the OpenAI API.
 
-##Features
+## Features
 
 +AI-Powered Insurance Assistant
 
@@ -79,29 +79,50 @@ To maintain accuracy and compliance, the help.py assistant now includes two laye
 Before the chatbot starts, users must now identify themselves with a valid insurance role.
 
 ### [x] Accepted Examples 
+
 The include but are not limited to:
+
 -Agent
+
 -Broker
+
 -Underwriter
+
 -Policy Administrator
+
 -Risk Assesor
 
-##How it Works
-+Architecture Summary
+## How it Works
+
+### +Architecture Summary
+
 -Loads API key securely using dotenv
+
 -Presents role-selection logic with validation
+
 -For each user message:
+
 1.) Validates it's insurance-related
+
 2.) Builds a full conversation history
+
 3.) Sends to the OpenAI Chat API (gpt-4o-mini)
+
 4.) Receives assistant response
+
 -GUI mode uses Tkinter for a more user-friendly experience
 
+
 ## Key Security and Compliance Notes
+
 -Never enter personal identifiable information into the chatbot
+
 -Do not paste real client data or claim numbers
+
 -This assistant chatbot is intentionally restricted to insurance topics
+
 -All API keys should remain outside the codebase
+
 
 
 
