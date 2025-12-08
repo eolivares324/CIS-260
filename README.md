@@ -2,7 +2,7 @@
 
 ### The Insurance Command Line AI Helper
 
-This is a README file for the command line chatbot ### help.py designed to assist **insurance professionals** with policy inquires, claims guidance and general insurance information. This is all powered by the OpenAI API.
+This is a README file for the command line chatbot ###help.py designed to assist **insurance professionals** with policy inquires, claims guidance and general insurance information. This is all powered by the OpenAI API.
 
 ## Features
 
