@@ -9,7 +9,6 @@
 #   - Offers quick commands for common insurance topics
 #   - Logs all chats for review or compliance
 #   - Customizes tone for different insurance roles
-#   - New quardrails and security features added
 # ==========================================================
 
 # -----------------------------
@@ -268,5 +267,92 @@ def main():
 # -----------------------------
 # Run main() when executed directly
 # -----------------------------
+# -----------------------------
+# Function: run_gui()
+# Purpose:
+#   Provides a graphical interface for the insurance chatbot using Tkinter.
+# -----------------------------
+def run_gui():
+    import tkinter as tk
+    from tkinter import scrolledtext, messagebox
+
+    # Ask for role in a popup
+    def prompt_for_role():
+        role_window = tk.Toplevel(root)
+        role_window.title("User Role")
+        role_window.geometry("350x150")
+        tk.Label(role_window, text="Enter your insurance role:").pack(pady=10)
+
+        role_entry = tk.Entry(role_window, width=30)
+        role_entry.pack()
+
+        def submit_role():
+            entered = role_entry.get().strip()
+            validated = validate_role(entered or "insurance professional")
+            nonlocal role
+            role = validated
+            role_window.destroy()
+
+        tk.Button(role_window, text="Submit", command=submit_role).pack(pady=10)
+        role_window.grab_set()
+
+    # Main window
+    root = tk.Tk()
+    root.title("Insurance AI Helper")
+    root.geometry("600x500")
+
+    conversation_history = []
+    role = "insurance professional"
+
+    # Chat display
+    chat_display = scrolledtext.ScrolledText(root, wrap=tk.WORD, state="disabled", font=("Arial", 11))
+    chat_display.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+
+    # Input field
+    input_box = tk.Entry(root, font=("Arial", 12))
+    input_box.pack(padx=10, pady=5, fill=tk.X)
+
+    # Send message logic
+    def send_message(event=None):
+        user_message = input_box.get().strip()
+        if not user_message:
+            return
+        
+        # Display user message
+        chat_display.configure(state="normal")
+        chat_display.insert(tk.END, f"You: {user_message}\n")
+        chat_display.configure(state="disabled")
+        input_box.delete(0, tk.END)
+
+        # Insurance topic validation
+        if not is_insurance_related(user_message):
+            bot_reply = ("I'm sorry, but I can only assist with insurance-related topics. "
+                         "Please ask about policies, claims, coverage, or other insurance topics.")
+        else:
+            bot_reply = ask_insurance_bot(user_message, conversation_history, role)
+            log_interaction(user_message, bot_reply)
+
+        # Display bot response
+        chat_display.configure(state="normal")
+        chat_display.insert(tk.END, f"Bot: {bot_reply}\n\n")
+        chat_display.configure(state="disabled")
+        chat_display.yview(tk.END)
+
+    # Send Button for input response
+    send_button = tk.Button(root, text="Send", command=send_message)
+    send_button.pack(pady=5)
+
+    # Bind Enter key
+    input_box.bind("<Return>", send_message)
+
+    # Prompt role on startup
+    prompt_for_role()
+
+    root.mainloop()
+
 if __name__ == "__main__":
-    main()
+    mode = input("Start in GUI mode? (y/n): ").strip().lower()
+    if mode == "y":
+        run_gui()
+    else:
+        main()
