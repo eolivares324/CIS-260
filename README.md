@@ -4,9 +4,17 @@
 
 This is a README file for the command line chatbot designed to assist **insurance professionals** with policy inquires, claims guidance and general insurance information. This is all powered by the OpenAI API.
 
-## 10/15/2025 Comments
+## Prerequisites
 
-To run help.py:
+-Python 3.9+
+
+-OpenAI Python SDK (openai)
+
+-Tkinter (included with most Python installations)
+
+-python-dotenv
+
+## To run help.py:
 
 
 ### Install Dependencies: 
