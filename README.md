@@ -15,8 +15,6 @@ This is a README file for the command line chatbot designed to assist **insuranc
 -python-dotenv
 
 ## To run help.py:
-
-
 ### Install Dependencies: 
 `pip install openai python-dotenv datetime`
 
